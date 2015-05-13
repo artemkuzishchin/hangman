@@ -78,7 +78,7 @@ public class Hangman extends ConsoleProgram {
 	
 	private void getCharGuess() {
 		String getChar = readLine("Your guess: ");
-		getChar.toUpperCase();
+		getChar = getChar.toUpperCase();
 		while (true) {
 			if(getChar.length() > 1) {
 				getChar = readLine("You can only guess one letter at a time. Try again: ");
@@ -135,11 +135,15 @@ public class Hangman extends ConsoleProgram {
 	//updates the hiddenWord if the character entered is correct 
 	private void letterCheck() {
 		//checks to see if the guessed letter is in the word
-		if(word.indexOf(ch) == -1) {
-			println("There are no " + ch + "'s in the word");
-			guessCounter--;
-			incorrectLetters = incorrectLetters + ch;
-			canvas.noteIncorrectGuess(incorrectLetters);
+		if(incorrectLetters.indexOf(ch) == -1){
+			if(word.indexOf(ch) == -1) {
+				println("There are no " + ch + "'s in the word");
+				guessCounter--;
+				incorrectLetters = incorrectLetters + ch;
+				canvas.noteIncorrectGuess(incorrectLetters);
+			}
+		} else {
+			println("You already guessed " + ch + ", try again with a different letter.");
 		}
 		if(word.indexOf(ch) != -1) {
 			println("The guess is correct.");
