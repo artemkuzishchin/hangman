@@ -156,7 +156,7 @@ public class TestHangman {
 		}
 		
 		assertEquals("Should have 0 guesses remaining after losing", 0, hangman.getGuessCounter());
-		assertTrue("Hidden word should not be revelaed after losing", 
+		assertTrue("Hidden word should not be revealed after losing", 
 				!(hangman.getHiddenWord().equalsIgnoreCase(wordToGuess)));
 	}
 	
